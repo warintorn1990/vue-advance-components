@@ -2,11 +2,17 @@
     <div class="container">
         <div class="row">
             <div class="col-xs-12">
-               <app-quote >
+                <button @click="selectedComponent = 'appQuote'">Quote</button>
+                <button @click="selectedComponent = 'appAuther'">Auther</button>
+                <button @click="selectedComponent = 'appNew'">New</button>
+            <hr>
+            {{selectedComponent}}
+            <component :is="selectedComponent"></component>
     
-                {{title}}
+               <!-- <app-quote >
+                {{selectedComponent}}
                 <h2>ทดสอบการทำงานของ Scoped</h2>
-               </app-quote>
+               </app-quote> -->
             </div>
         </div>
     </div>
@@ -14,14 +20,20 @@
 
 <script>
     import Quote from './components/Quote'
+    import Auther from './components/Auther'
+    import New from './components/New'
+
     export default {
         data: function(){
             return{
-                title: 'ทดสอบ Slotes'
+                title: 'ทดสอบ Slotes',
+                selectedComponent: 'appQuote'
             };
         },
         components: {
-            appQuote: Quote
+            appQuote: Quote,
+            appAuther: Auther,
+            appNew: New
         }
     }
 </script>
